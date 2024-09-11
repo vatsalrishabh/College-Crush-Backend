@@ -17,20 +17,19 @@ const sendOtpEmail = async (to, otp, subject) => {
         subject: subject, // Email subject
         text: `${subject}: ${otp}. `,
         html: `
-            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                <h2 style="color: #4CAF50;">Welcome to PulseCare!</h2>
-                <p>Dear User,</p>
-                <p>To ensure the security of your account and to complete your registration, please verify your email with the One-Time Password (OTP) provided below.</p>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; padding: 20px;">
+                <h2 style="color: #ff4458;">Welcome to CollegeCrush!</h2>
+                <p style="font-size: 16px;">Hi there,</p>
+                <p style="font-size: 16px;">To complete your registration and join the fun on CollegeCrush, please use the One-Time Password (OTP) below to verify your email.</p>
                 <div style="text-align: center; margin: 20px 0;">
-                    <span style="font-size: 24px; color: #4CAF50; font-weight: bold;">Your OTP: ${otp}</span>
+                    <span style="font-size: 24px; color: #fe2c73; font-weight: bold;">Your OTP: ${otp}</span>
                 </div>
-                <p>Please enter the OTP above to complete your registration.</p>
-                <p>This step will allow you to access our online doctor consultancy services and take charge of your health.</p>
+                <p style="font-size: 16px;">Enter this OTP on our website to finalize your registration and start exploring exciting contests, secret posts, and beauty rankings.</p>
                 <p style="text-align: center; margin: 20px 0;">
-                    <img src="https://t4.ftcdn.net/jpg/03/33/90/67/360_F_333906704_JFXLTAImnaXTxpNJZYOmMQL2hx80zTG8.jpg" alt="PulseCare" style="width: 100%; max-width: 400px; border-radius: 10px;" />
+                    <img src="https://cdn.pixabay.com/photo/2018/08/03/04/36/couple-3581038_640.jpg" alt="CollegeCrush" style="width: 100%; max-width: 400px; border-radius: 10px;" />
                 </p>
-                <p>Thank you for choosing PulseCare. We are here to support your health journey.</p>
-                <p style="color: #777;">Best regards,<br/>The PulseCare Team</p>
+                <p style="font-size: 16px;">Thank you for joining CollegeCrush. We’re thrilled to have you on board!</p>
+                <p style="font-size: 16px; color: #777;">Best regards,<br/>The CollegeCrush Team</p>
             </div>
         `,
     };

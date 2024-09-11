@@ -9,7 +9,7 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-// Function to send OTP email
+// Function to send OTP email for password reset
 const sendOtpEmailForgot = (to, otp, subject) => {
     const mailOptions = {
         from: process.env.PulseCareEmail, // Sender email address
@@ -17,19 +17,19 @@ const sendOtpEmailForgot = (to, otp, subject) => {
         subject: subject, // Email subject
         text: `Your OTP to reset your password is: ${otp}. Please use this OTP to reset your password.`,
         html: `
-            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
-                <h2 style="color: #4CAF50;">PulseCare Password Reset</h2>
-                <p>Dear User,</p>
-                <p>We received a request to reset your password. Please use the One-Time Password (OTP) provided below to complete the process.</p>
+            <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f9f9f9; padding: 20px;">
+                <h2 style="color: #ff4458;">CollegeCrush Password Reset</h2>
+                <p style="font-size: 16px;">Hello,</p>
+                <p style="font-size: 16px;">We received a request to reset your password for your CollegeCrush account. Please use the One-Time Password (OTP) below to complete the password reset process.</p>
                 <div style="text-align: center; margin: 20px 0;">
-                    <span style="font-size: 24px; color: #4CAF50; font-weight: bold;">Your OTP: ${otp}</span>
+                    <span style="font-size: 24px; color: #fe2c73; font-weight: bold;">Your OTP: ${otp}</span>
                 </div>
-                <p>If you did not request a password reset, please ignore this email.</p>
+                <p style="font-size: 16px;">If you did not request a password reset, you can safely ignore this email. For any issues, please contact our support team.</p>
                 <p style="text-align: center; margin: 20px 0;">
-                    <img src="https://t4.ftcdn.net/jpg/03/33/90/67/360_F_333906704_JFXLTAImnaXTxpNJZYOmMQL2hx80zTG8.jpg" alt="PulseCare" style="width: 100%; max-width: 400px; border-radius: 10px;" />
+                    <img src="https://your-image-url.com/collage-crush-image.jpg" alt="CollegeCrush" style="width: 100%; max-width: 400px; border-radius: 10px;" />
                 </p>
-                <p>If you have any issues, please contact PulseCare support.</p>
-                <p style="color: #777;">Best regards,<br/>The PulseCare Team</p>
+                <p style="font-size: 16px;">Thank you for being part of CollegeCrush. We are here to help you with any issues you might have.</p>
+                <p style="font-size: 16px; color: #777;">Best regards,<br/>The CollegeCrush Team</p>
             </div>
         `,
     };

@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 require('dotenv').config(); // Load environment variables from .env file
 
 // Get the MongoDB URI from environment variables
-// const uri = process.env.MONGO_URI;
-const uri = "mongodb://localhost:27017/CollegeCrush";
+const uri = process.env.MONGO_URI;
+// const uri = "mongodb://localhost:27017/CollegeCrush";
 
 // Connect to MongoDB
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
