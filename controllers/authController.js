@@ -53,7 +53,7 @@ const verifyOtp = async (req, res) => {
             const {email,name,contact,college,gender, password } = req.body;
                 // Construct the full URL for the profile picture
     const dpPath = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-            const newStudent = new Student({ email,name,contact,college,gender, dp:dpPath, });  // Updated to Student
+            const newStudent = new Student({ email,name,contact,college,gender, dp:dpPath,password });  // Updated to Student
             await newStudent.save();
 
             // Optionally, delete the OTP after successful verification
@@ -84,8 +84,8 @@ const loginStudent = async (req, res) => {
             return res.status(400).json({ message: 'Incorrect password.' });
         }
 
-        const { mobile } = student;
-        const studentData = makeJwtToken({ email, mobile });
+        const { contact } = student;
+        const studentData = makeJwtToken({ email, contact });
         
         return res.status(200).json({ message: 'User Logged In Successfully.', studentDetails: studentData });
     } catch (error) {
@@ -95,8 +95,8 @@ const loginStudent = async (req, res) => {
 
 // Update Password
 const updatePassword = async (req, res) => {
-    const { emailUpdatePassword } = req.body;
-    const email = emailUpdatePassword;
+    const { email} = req.body;
+
 
     try {
         const studentDetails = await Student.findOne({ email });  // Updated to Student
@@ -104,11 +104,11 @@ const updatePassword = async (req, res) => {
             return res.status(400).json({ message: "Email not found, Please go to Registration Page!" });
         }
 
-        const otpDoc = await Otp.findOne({ email });
-        const otp = otpDoc ? otpDoc.otp : generateOtp();
+        const otpDoc = await Otp.findOne({ email });  //khoko otp collection me hai ki nhi otp
+        const otp = otpDoc ? otpDoc.otp : generateOtp(); //wha se 6 digit ka otp mile to otp me laake rakh do nhi to khud se generate kr lo
 
         if (!otpDoc) {
-            const newOtp = new Otp({ email, otp });
+            const newOtp = new Otp({ email, otp });  //agar otp collection me na mile to bana do
             await newOtp.save();
             await sendOtpEmailForgot(email, otp, "OTP to reset your password.", subject);
             console.log("New OTP generated and sent for password reset.");

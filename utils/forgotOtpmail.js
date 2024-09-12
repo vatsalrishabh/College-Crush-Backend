@@ -10,7 +10,7 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send OTP email for password reset
-const sendOtpEmailForgot = (to, otp, subject) => {
+const sendOtpEmailForgot = async (to, otp, subject) => {
     const mailOptions = {
         from: process.env.PulseCareEmail, // Sender email address
         to, // Recipient email address
@@ -26,7 +26,7 @@ const sendOtpEmailForgot = (to, otp, subject) => {
                 </div>
                 <p style="font-size: 16px;">If you did not request a password reset, you can safely ignore this email. For any issues, please contact our support team.</p>
                 <p style="text-align: center; margin: 20px 0;">
-                    <img src="https://your-image-url.com/collage-crush-image.jpg" alt="CollegeCrush" style="width: 100%; max-width: 400px; border-radius: 10px;" />
+                    <img src="https://cdn.pixabay.com/photo/2018/08/03/04/36/couple-3581038_640.jpg" alt="CollegeCrush" style="width: 100%; max-width: 400px; border-radius: 10px;" />
                 </p>
                 <p style="font-size: 16px;">Thank you for being part of CollegeCrush. We are here to help you with any issues you might have.</p>
                 <p style="font-size: 16px; color: #777;">Best regards,<br/>The CollegeCrush Team</p>

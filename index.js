@@ -19,7 +19,10 @@ app.use(cors({
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));  // to serve the image file to fornend
 // Patient routes
+
+
 app.use('/api/students', require('./routes/student'));
+app.use('/api/messages', require('./routes/message'));
 
 // Doctor routes
 // app.use('/api/doctors', require('./routes/doctor'));
