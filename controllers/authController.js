@@ -87,7 +87,7 @@ const loginStudent = async (req, res) => {
         const { contact } = student;
         const studentData = makeJwtToken({ email, contact });
         
-        return res.status(200).json({ message: 'User Logged In Successfully.', studentDetails: studentData });
+        return res.status(200).json({ message: 'User Logged In Successfully.', jwt: studentData });
     } catch (error) {
         return res.status(500).json({ message: 'Server error.' });
     }

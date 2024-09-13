@@ -14,7 +14,7 @@ app.use(express.json()); // Handles JSON parsing
 app.use(cors({
   origin: '*', // Allow requests from this origin
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow these HTTP methods
-  allowedHeaders: ['Content-Type'], // Allow these headers
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers
 }));
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));  // to serve the image file to fornend

@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
 const MessageSchema = new mongoose.Schema({
-    sendFrom: {
+    sentFrom: {
         type: String,
         required: true,  // Field is mandatory
     },
-    sendTo: {
+    sentTo: {
         type: String,
         required: true,  // Field is mandatory
     },
