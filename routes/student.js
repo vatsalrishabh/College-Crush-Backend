@@ -7,8 +7,8 @@ const { fetchAllStudents,fetchOneStudent } = require('../controllers/fetchContro
 const router = express.Router();
 
 // Define patient routes
-router.get('/', fetchAllStudents);
-router.get('/:id', fetchOneStudent );
+router.get('/', fetchAllStudents);  //  http://localhost:3000/api/students/
+router.get('/:id', fetchOneStudent );  //http://localhost:3000/api/students/email
 
 
 

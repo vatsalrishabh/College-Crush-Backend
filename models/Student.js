@@ -13,6 +13,8 @@ const studentSchema = new mongoose.Schema({
   dp3:String,
   dp4:String,
   dp5:String,
+  lastSeen: { type: Date, default: Date.now },
+  onlineStatus:String,
 });
 
 const Student = mongoose.model('Student', studentSchema);
