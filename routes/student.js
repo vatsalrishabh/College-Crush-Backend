@@ -8,7 +8,7 @@ const router = express.Router();
 
 // Define patient routes
 router.get('/', fetchAllStudents);  //  http://localhost:3000/api/students/
-router.get('/:id', fetchOneStudent );  //http://localhost:3000/api/students/email
+router.get('/:id', fetchOneStudent );  //http://localhost:3000/api/students/id
 
 
 

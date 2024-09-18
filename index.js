@@ -23,6 +23,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // API routes
 app.use('/api/students', require('./routes/student'));
 app.use('/api/messages', require('./routes/message'));
+app.use('/api/questions', require('./routes/games'));
 
 // Create HTTP server and Socket.IO
 const server = http.createServer(app);
