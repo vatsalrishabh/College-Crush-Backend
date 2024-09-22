@@ -1,22 +1,12 @@
 const mongoose = require('mongoose');
 
 const MatchSchema = new mongoose.Schema({
-    likedby: {
-        type: String,
-        required: true
-    },
-    likedto: {
-        type: String,
-        required: true
-    },
-    crushby: {
-        type: String,
-       
-    },
-    crushto: {
-        type: String,
-        // Not required
-    },
+    dislikedby: String,
+    dislikedto: String,
+    likedby: String,
+    likedto: String,
+    crushby: String,
+    crushto: String,
     dateTime: {
         type: Date,
         default: Date.now // Automatically sets the current date and time if not provided

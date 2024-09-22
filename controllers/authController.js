@@ -31,7 +31,7 @@ const registerStudent = async (req, res) => {
             await otpDoc.save(); // Save the OTP to the database
             console.log("New OTP generated and sent.");
         } else {
-            console.log("OTP from Otp collection: " + otpDoc.otp);
+            // console.log("OTP from Otp collection: " + otpDoc.otp);
         }
 
         await sendOtpEmail(email, otp, message, subject);
@@ -51,9 +51,14 @@ const verifyOtp = async (req, res) => {
         const existingOtp = await Otp.findOne({ email, otp });
         if (existingOtp) {
             const {email,name,contact,college,gender, password } = req.body;
+
+                // Fetch the last studentId from the database
+      const lastStudent = await Student.findOne().sort({ studentId: -1 }).exec();
+      // Increment the last studentId or start from 1 if no student exists, then convert to string
+      const newStudentId = lastStudent ? (parseInt(lastStudent.studentId) + 1).toString() : '1';
                 // Construct the full URL for the profile picture
     const dpPath = `${req.protocol}://${req.get('host')}/uploads/${req.file.filename}`;
-            const newStudent = new Student({ email,name,contact,college,gender, dp:dpPath,password });  // Updated to Student
+            const newStudent = new Student({  studentId: newStudentId, email,name,contact,college,gender, dp:dpPath,password });  // Updated to Student
             await newStudent.save();
 
             // Optionally, delete the OTP after successful verification
@@ -111,7 +116,7 @@ const updatePassword = async (req, res) => {
             const newOtp = new Otp({ email, otp });  //agar otp collection me na mile to bana do
             await newOtp.save();
             await sendOtpEmailForgot(email, otp, "OTP to reset your password.", subject);
-            console.log("New OTP generated and sent for password reset.");
+            // console.log("New OTP generated and sent for password reset.");
         } else {
             await sendOtpEmailForgot(email, otp, "OTP to reset your password.", subject);
             console.log("Existing OTP sent for password reset.");
